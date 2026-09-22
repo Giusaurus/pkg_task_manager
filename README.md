@@ -14,7 +14,8 @@ HIGH: The Task will be retried three more times (can be adjusted to the own desi
       used up, the task will be discarded.
       
 Critical: Functions the same as the HIGH priority, but instead of just discarding the task, the mission
-          will be stopped after the retries are used up.
+          will be stopped after the retries are used 
+          up.
 
 
 Instructions for currently implemented tasks/modules:
