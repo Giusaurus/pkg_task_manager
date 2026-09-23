@@ -1,0 +1,18 @@
+services:
+  examples:
+    image: task_manager
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    networks:
+      - pib-network
+    volumes:
+      - ./config:/config:ro
+    privileged: true
+    init: true
+    command: ros2 launch /config/task_manager.launch.py
+    # command: sleep 1d
+
+networks:
+  pib-network:
+    driver: bridge
