@@ -1,11 +1,13 @@
 from georg_task_manager.missions.DigitalFestival import get_mission as DigitalFestival
 from georg_task_manager.missions.Test_Mapping import get_mission as TestMapping
-
+import os
 
 def select_mission():
+    mission_id = os.environ.get("MISSION_ID")
 
-    while True:
-
+    
+    if mission_id is None:
+        
         print("\n==================================")
         print("         TASK MANAGER")
         print("==================================")
@@ -15,10 +17,10 @@ def select_mission():
 
         choice = input("\nSelect Mission: ")
 
-        if choice == "1":
+        if mission_id == "1":
             return DigitalFestival()
         
-        if choice == "2":
+        elif mission_id == "2":
             return TestMapping()
 
 
