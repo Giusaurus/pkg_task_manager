@@ -21,7 +21,7 @@ Critical: Works the same as the HIGH priority, but instead of just discarding th
 # Setup for currently implemented tasks/modules:
 
 
-## Terminal 1 (for Navigation_Action_Server_Room):
+## Terminal 1 (for Navigation_Room_Action_Server):
 
 source install/setup.bash
 
@@ -29,7 +29,7 @@ ros2 run navigate_server navigate_action_server \
 --node-name nav_room_server \
 --action-name /nav/navigate_room_x
 
-## Terminal 2 (for Navigation_Action_Server_Object):
+## Terminal 2 (for Navigation_Object_Action_Server):
 
 source install/setup.bash
 
@@ -42,12 +42,12 @@ source install/setup.bash
 
 ros2 run drive_route_server drive_route_action_server
 
-## Terminal 4 (for the Gesture_Action_Server): 
+## Terminal 4 (for Gesture_Action_Server): 
 source install/setup.bash
 
 ros2 run pib_gestures_action pib_gestures_server.py 
 
-## Terminal 5 (for the Listen_Action_Server): 
+## Terminal 5 (for Listen_Action_Server): 
 source install/setup.bash
 
 ros2 run voice_assistant listen_action_server
