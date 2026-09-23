@@ -6,6 +6,7 @@ def select_mission():
     mission_id = os.environ.get("MISSION_ID")
 
     
+    
     if mission_id is None:
         
         print("\n==================================")
