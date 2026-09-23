@@ -20,7 +20,7 @@ class TaskManagerNode(Node):
         self.shutdown_requested = False
         self.mission_thread = None
 
-        self.robot = Robot(self)
+        self.robot = Georg(self)
 
         self.manager = TaskManager(
             self.robot,
