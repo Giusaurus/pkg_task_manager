@@ -14,6 +14,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     git \
     && rm -rf /var/lib/apt/lists/*
+    python3 -m pip install --no-cache-dir \
+    numpy==1.26.4 \
+    tensorflow==2.16.2 \
+    tensorflow-hub==0.16.1 \
+    tf_keras==2.16.0 \
+    PyAudio==0.2.14 \
+    faster-whisper==1.2.1
 
 
 
