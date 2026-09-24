@@ -26,7 +26,7 @@ def generate_launch_description():
         arguments=["--node-name", "nav_room_server",
                     "--action-name", "/nav/navigate_room_x"],
         output="screen",
-    ),
+    )
 
     nav_obj_module = Node(
         package="navigate_server",
@@ -35,14 +35,14 @@ def generate_launch_description():
         arguments=["--node-name", "nav_object_server",
                     "--action-name", "/nav/navigate_object_x"],
         output="screen",
-    ),
+    )
 
     drive_route_module = Node(
         package="drive_route_server",
         executable="drive_route_action_server",
         name="drive_route_action_server",
         output="screen",
-    ),
+    )
 
 
 
@@ -53,7 +53,7 @@ def generate_launch_description():
         executable="pib_gestures_server.py",
         name="pib_gestures_server",
         output="screen",
-    ),
+    )
 
 
 
@@ -66,7 +66,7 @@ def generate_launch_description():
         executable="listen_action_server",
         name="listen_action_server",
         output="screen",
-    ),
+    )
 
 
 
@@ -78,7 +78,7 @@ def generate_launch_description():
         executable="task_manager",
         name="task_manager",
         output="screen",
-    ),
+    )
 
     return LaunchDescription([
       edu_robot_namespace_arg,
