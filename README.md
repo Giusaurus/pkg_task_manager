@@ -11,7 +11,7 @@ The priority determines, how the discard of the task is handled by the task mana
 The task will be discarded after the initial try.
 
 ### MID: 
-The task will be retried after the next task in sequence. Another failure will discard the task.
+The task will be retried after after a specified amount of time. Another failure will discard the task.
 
 ### HIGH: 
 The Task will be retried three more times (can be adjusted to the own desire). If the retries are used up, the task will be discarded.
