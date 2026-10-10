@@ -30,33 +30,25 @@ Works the same as the HIGH priority, but instead of just discarding the task, th
 source install/setup.bash
 
 ros2 run navigate_server navigate_action_server \
---node-name nav_room_server \
---action-name /nav/navigate_room_x
+--node-name nav_server \
+--action-name nav/navigate
 
-## Terminal 2 (for Navigation_Object_Action_Server):
-
-source install/setup.bash
-
-ros2 run navigate_server navigate_action_server \
---node-name nav_object_server \
---action-name /nav/navigate_object_x
-
-## Terminal 3 (for Drive Tasks):  
+## Terminal 2 (for Drive Tasks):  
 source install/setup.bash
 
 ros2 run drive_route_server drive_route_action_server
 
-## Terminal 4 (for Gesture_Action_Server): 
+## Terminal 3 (for Gesture_Action_Server): 
 source install/setup.bash
 
 ros2 run pib_gestures_action pib_gestures_server.py 
 
-## Terminal 5 (for Listen_Action_Server): 
+## Terminal 4 (for Listen_Action_Server): 
 source install/setup.bash
 
 ros2 run voice_assistant listen_action_server
 
-## Terminal 6 (for Task_Manager_Node):  
+## Terminal 5 (for Task_Manager_Node):  
 source install/setup.bash
 
 ros2 run georg_task_manager task_manager
