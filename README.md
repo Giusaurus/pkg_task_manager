@@ -59,4 +59,4 @@ ros2 run voice_assistant listen_action_server
 ## Terminal 6 (for Task_Manager_Node):  
 source install/setup.bash
 
-ros2 run robot_task_manager task_manager
+ros2 run georg_task_manager task_manager
