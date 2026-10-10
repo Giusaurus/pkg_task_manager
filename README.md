@@ -29,9 +29,7 @@ Works the same as the HIGH priority, but instead of just discarding the task, th
 
 source install/setup.bash
 
-ros2 run navigate_server navigate_action_server \
---node-name nav_server \
---action-name nav/navigate
+ros2 run navigate_server navigate_action_server --node-name nav_server --action-name nav/navigate
 
 ## Terminal 2 (for Drive Tasks):  
 source install/setup.bash
