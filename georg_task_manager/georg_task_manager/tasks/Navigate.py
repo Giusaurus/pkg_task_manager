@@ -1,4 +1,7 @@
 # Navigate.py
+
+import math
+
 from .base import BaseTask
 from .timeout_watcher import wait_for_action_result
 from .priority import TaskPriority
@@ -91,6 +94,9 @@ class Navigate(BaseTask):
                 drive_goal = DriveRoute.Goal()
                 drive_goal.waypoints = result.waypoints
                 drive_goal.map_name = self.map_path
+                last = result.waypoints[-1]
+                drive_goal.use_final_yaw = True
+                drive_goal.final_yaw = math.atan2(target[1] - last.y, target[0] - last.x)
 
                 drive_result = await wait_for_action_result(
                     robot.drive_route_action_client,
