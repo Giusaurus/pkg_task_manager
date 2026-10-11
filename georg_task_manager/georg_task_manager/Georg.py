@@ -41,16 +41,10 @@ class Georg:
 
         # Navigate
 
-        self.navigate_room_action_client = ActionClient(
+        self.navigate_action_client = ActionClient(
             node,
             Navigate,
-            "nav/navigate_room_x"
-        )
-
-        self.navigate_object_action_client = ActionClient(
-            node,
-            Navigate,
-            "nav/navigate_object_x"
+            "nav/navigate"
         )
 
         # Drive 
@@ -66,7 +60,7 @@ class Georg:
         # self.search_guest_pub = (
         #     node.create_publisher(
         #         Bool,
-        #         "/vision/search_guest",
+        #         "vision/search_guest",
         #         10
         #     )
         # )
@@ -74,7 +68,7 @@ class Georg:
         # self.search_seat_pub = (
         #     node.create_publisher(
         #         Bool,
-        #         "/vision/search_seat",
+        #         "vision/search_seat",
         #         10
         #     )
         # )
@@ -86,8 +80,6 @@ class Georg:
             10
         )
         
-
-
 
         self.audio_say_pub = node.create_publisher(
             StringMsg,
