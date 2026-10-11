@@ -6,7 +6,7 @@ from georg_task_manager.tasks.Navigate import DriveRoute
 from georg_task_manager.tasks.priority import LOW, MID, HIGH, CRITICAL
 
 
-MAP_PATH = "/home/giu/georg_maps/Nav_Test.yaml"
+MAP_PATH = "/home/giu/georg_maps/Nav_Test_V3.yaml"
 
 # Parameters:
 # Listening: ("SPEECH") = Speech detection
@@ -16,7 +16,7 @@ MAP_PATH = "/home/giu/georg_maps/Nav_Test.yaml"
 
 
 async def get_mission(robot, state, run_task):
-    print("[MISSION] Bar started")
+    print("[MISSION] Test Mapping started")
 
     #await run_task(Listening("DOORBELL", timeout_sec=60.0, priority=HIGH))
     #await run_task(Gesture("look_at", -1000.0, 0.0, 100.0))
@@ -26,5 +26,7 @@ async def get_mission(robot, state, run_task):
     #await run_task(Listening("SPEECH"))
     #await run_task(Gesture("look_at", -1000.0, 0.0, 100.0))
     #await run_task(Gesture("greet_person", -1000.0, 0.0, 100.0))
-    await run_task(Navigate("Door", MAP_PATH,priority= HIGH))
+    await run_task(Navigate("Water", MAP_PATH,priority= HIGH))
+    await run_task(Navigate("Exit", MAP_PATH,priority= HIGH))
+    await run_task(Navigate("Entrance", MAP_PATH,priority= HIGH))
     await run_task(ReturnToIdle())
