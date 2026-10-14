@@ -12,6 +12,14 @@
   <depend>pib_gestures_action</depend>
   <depend>georg_nav_action</depend>
   <depend>pib-audio</depend>
+  <depend>georg_nav_msgs</depend>
+  <depend>navigate_server</depend>
+  <depend>nav_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>std_msgs</depend>
+
+  <exec_depend>py_trees</exec_depend>
+  <exec_depend>py_trees_ros</exec_depend>
   
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

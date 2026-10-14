@@ -52,10 +52,12 @@ class Navigate(BaseTask):
         try:
             for attempt in range(self.max_replan_attempts + 1):
 
-                start = getattr(state, "current_position", None)
-                if start is None:
+                odom = getattr(state, "current_position", None)
+                if odom is None:
                     print("[TASK] NavigateObject FAILED: no current position available")
                     return False
+                map_start = grid_rasterizer.load_map_start(self.map_path) or (0.0, 0.0)
+                start = (odom[0] + map_start[0], odom[1] + map_start[1])
 
                 goal_point = self._apply_standoff(start, target, self.standoff_m)
 
