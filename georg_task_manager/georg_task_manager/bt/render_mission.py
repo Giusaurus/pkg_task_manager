@@ -5,12 +5,15 @@ from unittest.mock import MagicMock
 
 import py_trees
 
-from georg_task_manager.bt.missions.Test_Mapping_BT import get_mission_bt as TestMapping
-# from georg_task_manager.bt.missions.DigitalFestival_BT import get_mission_bt as DigitalFestival
+
+from georg_task_manager.bt.missions.Test_Mapping_BT import TestMapping as TestMapping
+from georg_task_manager.bt.missions.Comparison_BT import ComparisonBT as ComparisonBT
 
 MISSIONS = {
-    "2": ("Test_Mapping", TestMapping),
-    # "1": ("DigitalFestival", DigitalFestival),
+    
+    "1": ("Test_Mapping", TestMapping),
+    "2": ("Comparison", ComparisonBT),
+
 }
 
 V = py_trees.common.VisibilityLevel
@@ -34,8 +37,7 @@ def main():
 
     name, builder = MISSIONS[args.mission]
 
-    # Die Blaetter greifen erst beim Ticken auf robot/state zu,
-    # fuer die Darstellung reichen Platzhalter.
+
     root = builder(MagicMock(), SimpleNamespace())
 
     out = os.path.expanduser(args.out)

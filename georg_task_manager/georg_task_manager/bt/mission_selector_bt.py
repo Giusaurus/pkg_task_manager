@@ -1,7 +1,7 @@
 import os
 
-from georg_task_manager.bt.missions.Test_Mapping_BT import get_mission_bt as TestMapping
-# from georg_task_manager.bt.missions.DigitalFestival_BT import get_mission_bt as DigitalFestival
+from georg_task_manager.bt.missions.Comparison_BT import ComparisonBT as ComparisonBT
+from georg_task_manager.bt.missions.Test_Mapping_BT import TestMapping as TestMapping
 
 
 def select_mission():
@@ -16,10 +16,15 @@ def select_mission():
     print("\n==================================")
     print("       TASK MANAGER (BT)")
     print("==================================")
-    print("2 - Mapping Test")
+    print("2 - Comparison")
+    print("1 - Mapping Test")
     print("0 - Exit")
 
     choice = input("\nSelect Mission: ")
-    if choice == "2":
+    if choice == "1":
         return TestMapping
+    
+    if choice == "2":
+        return ComparisonBT
+    
     return None
