@@ -50,3 +50,9 @@ ros2 run voice_assistant listen_action_server
 source install/setup.bash
 
 ros2 run georg_task_manager task_manager
+
+or
+
+source install/setup.bash
+
+ros2 run georg_task_manager task_manager_bt
