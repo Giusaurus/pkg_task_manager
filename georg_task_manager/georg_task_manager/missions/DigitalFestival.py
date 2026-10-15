@@ -3,6 +3,7 @@ from georg_task_manager.tasks.Gesture import Gesture
 from georg_task_manager.tasks.ReturnToIdle import ReturnToIdle
 from georg_task_manager.tasks.Navigate import Navigate
 from georg_task_manager.tasks.Navigate import DriveRoute
+from georg_task_manager.tasks.GraspPlanning import GraspPlanning
 from georg_task_manager.tasks.priority import LOW, MID, HIGH, CRITICAL
 
 
@@ -22,6 +23,7 @@ async def get_mission(robot, state, run_task):
     await run_task(Gesture("look_at", -1000.0, 0.0, 100.0))
     await run_task(Gesture("point_to", -2000.0, 0.0, 100.0))
     await run_task(Navigate("Seat", MAP_PATH, priority= HIGH))
+    await run_task(GraspPlanning("cup", (0.4, -0.1, 0.8), 0.45, priority=HIGH))
     await run_task(Listening("SPEECH"))
     await run_task(Gesture("look_at", -1000.0, 0.0, 100.0))
     await run_task(Gesture("greet_person", -1000.0, 0.0, 100.0))
