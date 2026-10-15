@@ -14,7 +14,7 @@ def get_mission_bt(robot, state):
         #Gesture_BT.build(robot, state, "point_to", -2000.0, 0.0, 100.0),
         Navigate_BT.build(robot, state, "Seat", MAP_PATH, priority=HIGH),
         #Listening_BT.build(robot, state, "SPEECH"),
-        #GraspPlanning_BT.build(robot, state, "cup", (0.4, -0.1, 0.8), 0.45, priority=HIGH)
+        #GraspPlanning_BT.build(robot, state, "cup", (0.4, -0.1, 0.8), 0.45, priority=HIGH),
         #Gesture_BT.build(robot, state, "look_at", -1000.0, 0.0, 100.0),
         #Gesture_BT.build(robot, state, "greet_person", -1000.0, 0.0, 100.0),
         Navigate_BT.build(robot, state, "Water", MAP_PATH, priority=HIGH),
