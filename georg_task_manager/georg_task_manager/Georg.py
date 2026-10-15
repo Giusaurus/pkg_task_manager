@@ -5,6 +5,7 @@ from std_msgs.msg import Bool
 from pib_gestures_action.action import PibGesturesInterface
 from datatypes.action import Listen
 from georg_nav_msgs.action import Navigate, DriveRoute
+from grasp_planning.action import GraspPlanning
 from std_msgs.msg import String as StringMsg
 from .interface import RobotState
 from nav_msgs.msg import Odometry
@@ -55,6 +56,13 @@ class Georg:
             "nav/drive_route"
         )
 
+        # Grasp Planning
+
+        self.grasp_planning_action_client = ActionClient(
+            node,
+            GraspPlanning,
+            'grasp_planning')
+        
         # # Vision (Placeholder)
 
         # self.search_guest_pub = (
