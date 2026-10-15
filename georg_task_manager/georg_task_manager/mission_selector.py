@@ -1,5 +1,6 @@
 from georg_task_manager.missions.DigitalFestival import get_mission as DigitalFestival
 from georg_task_manager.missions.Test_Mapping import get_mission as TestMapping
+from georg_task_manager.missions.Comparison import get_mission as Comparison
 import os
 
 def select_mission():
@@ -14,6 +15,9 @@ def select_mission():
         elif mission_id == "2":
             return TestMapping
 
+        elif mission_id == "3":
+            return Comparison
+
         print(f"\nInvalid MISSION_ID: {mission_id}\n")
         return None
 
@@ -23,6 +27,7 @@ def select_mission():
     print("==================================")
     print("1 - Digital Festival")
     print("2 - Mapping Test")
+    print("3 - Comparison")
     print("0 - Exit")
 
     choice = input("\nSelect Mission: ")
@@ -32,6 +37,9 @@ def select_mission():
 
     elif choice == "2":
         return TestMapping
+
+    elif choice == "3":
+        return Comparison
 
     elif choice == "0":
         return None
