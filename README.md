@@ -46,15 +46,22 @@ ros2 run pib_gestures_action pib_gestures_server.py
 chmod +x in terminal for the files:
 
 
-cd ~/Task_Manager_Pib/src/pib_gestures_action/modules  
+cd ~/Task_Manager_Pib/src/pib_gestures_action/modules
+
 chmod +x pib_gestures_client.py
+
 chmod +x pib_gestures_server.py
 
 
+
 cd ~/Task_Manager_Pib/src/pib_gestures_action/modules/pib_gestures/src/pib_gestures
+
 chmod +x greet_person.py
+
 chmod +x look_at.py
+
 chmod +x point_to.py
+
 
 
 
