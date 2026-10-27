@@ -55,7 +55,7 @@ pib_gestures_server.py
 
 
 
-~/Task_Manager_Pib/src/pib_gestures_action/modules/pib_gestures/src/pib_gestures: 
+~/Task_Manager_Pib/src/pib_gestures_action/modules/pib_gestures/src/pib_gestures : 
 
 
 greet_person.py
