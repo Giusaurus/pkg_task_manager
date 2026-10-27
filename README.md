@@ -43,7 +43,7 @@ ros2 run pib_gestures_action pib_gestures_server.py
 
 ### If no executable is found:
 
-chmod +x in terminal for the files:
+Execute these terminal commands:
 
 
 cd ~/Task_Manager_Pib/src/pib_gestures_action/modules
