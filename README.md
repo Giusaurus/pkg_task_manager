@@ -25,7 +25,7 @@ Works the same as the HIGH priority, but instead of just discarding the task, th
 # Setup for currently implemented tasks/modules:
 
 
-## Terminal 1 (for Navigation_Room_Action_Server):
+## Terminal 1 (for Navigation):
 
 source install/setup.bash
 
