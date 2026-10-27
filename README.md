@@ -41,6 +41,23 @@ source install/setup.bash
 
 ros2 run pib_gestures_action pib_gestures_server.py 
 
+### If no executable is found:
+
+chmod +x in terminal for the files:
+
+~/Task_Manager_Pib/src/pib_gestures_action/modules : 
+
+pib_gestures_client.py
+pib_gestures_server.py
+
+~/Task_Manager_Pib/src/pib_gestures_action/modules/pib_gestures/src/pib_gestures: 
+
+greet_person.py
+look_at.py
+point_to.py
+
+
+
 ## Terminal 4 (for Listen: 
 source install/setup.bash
 
