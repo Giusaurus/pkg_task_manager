@@ -41,10 +41,10 @@ source install/setup.bash
 
 ros2 run pib_gestures_action pib_gestures_server.py 
 
-### If no executable is found:
+## If no executable is found:
 
 Execute these terminal commands:
-
+###
 
 cd ~/Task_Manager_Pib/src/pib_gestures_action/modules
 
