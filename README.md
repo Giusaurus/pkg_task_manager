@@ -48,13 +48,17 @@ chmod +x in terminal for the files:
 ~/Task_Manager_Pib/src/pib_gestures_action/modules : 
 
 pib_gestures_client.py
+
 pib_gestures_server.py
 
 ~/Task_Manager_Pib/src/pib_gestures_action/modules/pib_gestures/src/pib_gestures: 
 
 greet_person.py
+
 look_at.py
+
 point_to.py
+
 
 
 
