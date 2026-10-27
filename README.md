@@ -36,17 +36,17 @@ source install/setup.bash
 
 ros2 run drive_route_server drive_route_action_server
 
-## Terminal 3 (for Gesture_Action_Server): 
+## Terminal 3 (for Gesture): 
 source install/setup.bash
 
 ros2 run pib_gestures_action pib_gestures_server.py 
 
-## Terminal 4 (for Listen_Action_Server): 
+## Terminal 4 (for Listen: 
 source install/setup.bash
 
 ros2 run voice_assistant listen_action_server
 
-## Terminal 5 (for Task_Manager_Node):  
+## Terminal 5 (for Task Manager Node):  
 source install/setup.bash
 
 ros2 run georg_task_manager task_manager
