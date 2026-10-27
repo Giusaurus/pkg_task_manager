@@ -52,7 +52,7 @@ chmod +x pib_gestures_client.py
 
 chmod +x pib_gestures_server.py
 
-
+####
 
 cd ~/Task_Manager_Pib/src/pib_gestures_action/modules/pib_gestures/src/pib_gestures
 
