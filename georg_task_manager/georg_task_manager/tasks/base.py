@@ -1,3 +1,4 @@
+import asyncio
 from .priority import TaskPriority
 
 
@@ -8,5 +9,5 @@ class BaseTask:
         self.priority = priority
         self.attempts = 0
 
-    async def run(self, robot, state) -> bool:
+    async def run(self, interface):
         raise NotImplementedError

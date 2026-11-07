@@ -10,6 +10,7 @@ class ReturnToIdleLeaf(py_trees.behaviour.Behaviour):
         super().__init__("ReturnToIdle")
         self.state = state
 
+
     def update(self):
         s = self.state
         s.is_listening = False

@@ -10,8 +10,6 @@ SERVER_WAIT_S = 2.0
 
 
 class ActionLeaf(py_trees.behaviour.Behaviour):
-    """Entspricht wait_for_action_result(): Goal senden, Result abwarten,
-    Timeout/Abort -> Goal stornieren und FAILURE."""
 
     def __init__(self, name, client, robot, state, timeout):
         super().__init__(name)
@@ -28,20 +26,23 @@ class ActionLeaf(py_trees.behaviour.Behaviour):
         self._goal_handle = None
         self._result_future = None
 
-    # --- Hooks fuer Unterklassen ---
+
     def make_goal(self):
         raise NotImplementedError
+
 
     def on_result(self, status, result):
         raise NotImplementedError
 
+
     def on_start(self):
         pass
+
 
     def on_end(self):
         pass
 
-    # --- py_trees ---
+    # py_trees 
     def initialise(self):
         self._reset()
         self.on_start()
@@ -95,7 +96,6 @@ class ActionLeaf(py_trees.behaviour.Behaviour):
 
 
 class TaskLabel(py_trees.behaviour.Behaviour):
-    """Wie TaskManager._run_single_task: current_task setzen und publizieren."""
 
     def __init__(self, task_name, robot, state):
         super().__init__(f"Label {task_name}")
@@ -113,7 +113,6 @@ class TaskLabel(py_trees.behaviour.Behaviour):
 
 
 class StateFlags(py_trees.decorators.Decorator):
-    """Setzt state-Flags beim Start und setzt sie beim Ende zurueck (wie try/finally)."""
 
     def __init__(self, name, child, state, on_start, on_end):
         super().__init__(name=name, child=child)
@@ -121,12 +120,15 @@ class StateFlags(py_trees.decorators.Decorator):
         self._on_start = on_start
         self._on_end = on_end
 
+
     def initialise(self):
         for k, v in self._on_start.items():
             setattr(self.state, k, v)
 
+
     def update(self):
         return self.decorated.status
+
 
     def terminate(self, new_status):
         for k, v in self._on_end.items():
@@ -134,7 +136,7 @@ class StateFlags(py_trees.decorators.Decorator):
 
 
 def with_priority(subtree, priority):
-    """Retry/Verwerfen/Abbruch wie TaskManager._handle_failure."""
+
     child = subtree
     if priority == TaskPriority.MID:
         delay = py_trees.composites.Sequence(

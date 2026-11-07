@@ -20,6 +20,7 @@ class TaskManagerBT(Node):
         self.robot = Georg(self)
         self.create_timer(0.5, self.start_once)
 
+
     def start_once(self):
         if self.started:
             return
@@ -43,6 +44,7 @@ class TaskManagerBT(Node):
 
         self.create_timer(0.1, self.check_shutdown)
 
+
     def _on_tick(self, tree):
         status = tree.root.status
         if status not in (Status.SUCCESS, Status.FAILURE) or self.shutdown_requested:
@@ -60,11 +62,13 @@ class TaskManagerBT(Node):
         self.robot.taskmanager_current_task_pub.publish(msg)
         self.shutdown_requested = True
 
+
     def check_shutdown(self):
         if self.shutdown_requested:
             self.destroy_node()
             if rclpy.ok():
                 rclpy.shutdown()
+
 
     def request_abort(self):
         self.robot.state.abort_requested = True

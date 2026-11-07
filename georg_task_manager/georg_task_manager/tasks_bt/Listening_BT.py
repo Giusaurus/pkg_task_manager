@@ -14,6 +14,7 @@ class ListeningLeaf(ActionLeaf):
         self.sound = sound
         self.timeout_sec = timeout_sec
 
+
     def make_goal(self):
         goal = Listen.Goal()
         if self.sound == "SPEECH":
@@ -26,13 +27,16 @@ class ListeningLeaf(ActionLeaf):
         goal.timeout_sec = self.timeout_sec
         return goal
 
+
     def on_start(self):
         print(f"[TASK] Listening started - target: {self.sound}")
         self.state.is_listening = True
         self.state.listening_for = self.sound
 
+
     def on_end(self):
         self.state.is_listening = False
+
 
     def on_result(self, status, result):
         if not result.detected:

@@ -5,7 +5,6 @@ from unittest.mock import MagicMock
 
 import py_trees
 
-
 from georg_task_manager.bt.missions.Test_Mapping_BT import TestMapping as TestMapping
 from georg_task_manager.bt.missions.Comparison_BT import ComparisonBT as ComparisonBT
 
@@ -26,13 +25,13 @@ LEVELS = {
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Mission als Dot-Graph ausgeben")
-    parser.add_argument("mission", choices=list(MISSIONS), help="Mission-ID wie im Selector")
-    parser.add_argument("-o", "--out", default=".", help="Zielordner")
+    parser = argparse.ArgumentParser(description="Mission as Dot-Graph")
+    parser.add_argument("mission", choices=list(MISSIONS), help="same mission ID as in mission selector")
+    parser.add_argument("-o", "--out", default=".", help="savegoal folder")
     parser.add_argument("-l", "--level", choices=list(LEVELS), default="detail",
-                        help="Detailgrad des Graphen")
+                        help="level of deetail of graph")
     parser.add_argument("-c", "--collapse", action="store_true",
-                        help="Decorators (Retry, Discard, ...) zusammenklappen")
+                        help=" collapse Decorators (Retry, Discard, ...)")
     args = parser.parse_args()
 
     name, builder = MISSIONS[args.mission]
@@ -52,7 +51,7 @@ def main():
     )
 
     print(py_trees.display.unicode_tree(root))
-    print(f"\nGraph geschrieben nach: {out}/{name}_BT.(dot|png|svg)")
+    print(f"\nGraph created: {out}/{name}_BT.(dot|png|svg)")
 
 
 if __name__ == "__main__":

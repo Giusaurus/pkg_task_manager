@@ -15,7 +15,6 @@ class Navigate(BaseTask):
     # Navigates to a named object's position in the map YAML (e.g. a
     # charging station or a specific seat)
     
-
     # How far (meters) to stop short of the object's exact point, so the
     # robot doesnt plan a path that ends centered on/inside
 
@@ -72,7 +71,7 @@ class Navigate(BaseTask):
                 result = await wait_for_action_result(
                     robot.navigate_action_client,
                     goal_msg,
-                    timeout=120.0,
+                    timeout=300.0,
                     abort_check=lambda: getattr(state, "abort_requested", False),
                 )
 
@@ -103,7 +102,7 @@ class Navigate(BaseTask):
                 drive_result = await wait_for_action_result(
                     robot.drive_route_action_client,
                     drive_goal,
-                    timeout=120.0,
+                    timeout=300.0,
                     abort_check=lambda: getattr(state, "abort_requested", False),
                 )
 

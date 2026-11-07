@@ -15,7 +15,7 @@ class ReturnToIdle(BaseTask):
         print("[TASK] ReturnToIdle started")
 
         
-        # Reset Flanken
+        # reset of interface variables
 
 
         state.is_listening = False

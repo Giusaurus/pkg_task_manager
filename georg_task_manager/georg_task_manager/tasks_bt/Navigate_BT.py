@@ -19,6 +19,7 @@ class ResolveTarget(py_trees.behaviour.Behaviour):
         self.object_name = object_name
         self.map_path = map_path
 
+
     def update(self):
         target = grid_rasterizer.load_named_object_position(self.map_path, self.object_name)
         if target is None:
@@ -28,16 +29,24 @@ class ResolveTarget(py_trees.behaviour.Behaviour):
         if not hasattr(self.state, "extra_obstacles"):
             self.state.extra_obstacles = []
         self.state.nav_obstacle_hit = False
+        self.state.nav_target = target
+        self.state.nav_target_name = self.object_name
+        if not hasattr(self.state, "extra_obstacles"):
+            self.state.extra_obstacles = []
+        self.state.nav_obstacle_hit = False
+        print(f"[TASK] NavigateObject started -> '{self.object_name}'")
         return Status.SUCCESS
+
 
 
 class PlanLeaf(ActionLeaf):
 
     def __init__(self, robot, state, map_path, standoff_m, obstacle_radius_m):
-        super().__init__("PlanPath", robot.navigate_action_client, robot, state, timeout=120.0)
+        super().__init__("PlanPath", robot.navigate_action_client, robot, state, timeout=300.0)
         self.map_path = map_path
         self.standoff_m = standoff_m
         self.obstacle_radius_m = obstacle_radius_m
+
 
     def make_goal(self):
 
@@ -58,12 +67,14 @@ class PlanLeaf(ActionLeaf):
         goal.obstacle_radius_m = self.obstacle_radius_m
         return goal
 
+
     def on_result(self, status, result):
         if result.result_code != NavigateAction.Result.RESULT_OK:
             print(f"[TASK] NavigateObject FAILED (result_code={result.result_code})")
             return Status.FAILURE
         print(f"[TASK] NavigateObject planned successfully: "
               f"{len(result.waypoints)} waypoints, {result.path_length_m:.2f} m")
+        print(f"[TASK] waypoints: {[(round(p.x, 2), round(p.y, 2)) for p in result.waypoints]}")
         self.state.nav_waypoints = list(result.waypoints)
         return Status.SUCCESS
 
@@ -71,8 +82,9 @@ class PlanLeaf(ActionLeaf):
 class DriveLeaf(ActionLeaf):
 
     def __init__(self, robot, state, map_path):
-        super().__init__("DriveRoute", robot.drive_route_action_client, robot, state, timeout=120.0)
+        super().__init__("DriveRoute", robot.drive_route_action_client, robot, state, timeout=300.0)
         self.map_path = map_path
+
 
     def make_goal(self):
         wps = self.state.nav_waypoints
@@ -85,9 +97,11 @@ class DriveLeaf(ActionLeaf):
         goal.final_yaw = math.atan2(target[1] - last.y, target[0] - last.x)
         return goal
 
+
     def on_result(self, status, result):
         if result.result_code == DriveRoute.Result.RESULT_OK:
-            print("[TASK] Navigate finished successfully")
+            print(f"[TASK] Navigate finished successfully -> "
+                  f"'{getattr(self.state, 'nav_target_name', '?')}'")
             self.state.extra_obstacles = []
             return Status.SUCCESS
 
@@ -104,7 +118,6 @@ class DriveLeaf(ActionLeaf):
 
 
 class ReplanOnObstacle(py_trees.decorators.Decorator):
-    """Wiederholt Plan+Fahrt nur nach RESULT_OBSTACLE_DETECTED (max. max_attempts mal)."""
 
     def __init__(self, name, child, state, max_attempts):
         super().__init__(name=name, child=child)
@@ -112,9 +125,11 @@ class ReplanOnObstacle(py_trees.decorators.Decorator):
         self.max_attempts = max_attempts
         self.obstacles = 0
 
+
     def initialise(self):
         self.obstacles = 0
         self.state.nav_obstacle_hit = False
+
 
     def update(self):
         if self.decorated.status == Status.FAILURE and self.state.nav_obstacle_hit:

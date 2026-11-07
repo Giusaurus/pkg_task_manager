@@ -65,30 +65,30 @@ class RobotState:
     current_position = None
     current_orientation = None
     
-    # Vision Status
+    #Vision (Placeholder)
     
 
-    found_guest: bool = False
-
-    vector_guest: Vector3D = field(
-        default_factory=Vector3D
-    )
-
-    found_seat: bool = False
-
-    vector_seat: Vector3D = field(
-        default_factory=Vector3D
-    )
+    #found_guest: bool = False
+    #
+    #vector_guest: Vector3D = field(
+    #     default_factory=Vector3D
+    # )
+    #
+    #found_seat: bool = False
+    #
+    #vector_seat: Vector3D = field(
+    #     default_factory=Vector3D
+    # )
 
     
-    # Object Identification
+    # Object Identification (Placeholder)
     
 
-    is_identifying_guest: bool = False
-    identified_guest: bool = False
+    #is_identifying_guest: bool = False
+    #identified_guest: bool = False
 
-    is_identifying_seat: bool = False
-    identified_seat: bool = False
+    #is_identifying_seat: bool = False
+    #identified_seat: bool = False
 
     
     # Arm Status

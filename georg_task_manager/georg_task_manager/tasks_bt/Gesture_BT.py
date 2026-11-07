@@ -13,6 +13,7 @@ class GestureLeaf(ActionLeaf):
         super().__init__(f"Gesture {mode}", robot.greet_action_client, robot, state, timeout=15.0)
         self.mode, self.vx, self.vy, self.vz = mode, vx, vy, vz
 
+
     def make_goal(self):
         goal = PibGesturesInterface.Goal()
         goal.gesture = self.mode
@@ -22,12 +23,15 @@ class GestureLeaf(ActionLeaf):
         goal.pib_hand = "open_hand"
         return goal
 
+
     def on_start(self):
         print(f"[TASK] Gesture {self.mode}: Started")
         self.state.is_greeting_guest = True
 
+
     def on_end(self):
         self.state.is_greeting_guest = False
+
 
     def on_result(self, status, result):
         if result.success != 0:
