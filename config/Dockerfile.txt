@@ -20,7 +20,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     tensorflow-hub==0.16.1 \
     tf_keras==2.16.0 \
     PyAudio==0.2.14 \
-    faster-whisper==1.2.1
+    faster-whisper==1.2.1 \
+    py-trees==2.6.0 \
+    py-trees-ros==2.6.0
 
 
 

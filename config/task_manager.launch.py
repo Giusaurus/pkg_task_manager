@@ -19,21 +19,12 @@ def generate_launch_description():
 
     # Navigation
 
-    nav_room_module = Node(
+    nav_module = Node(
         package="navigate_server",
         executable="navigate_action_server",
-        name="nav_room_server",
-        arguments=["--node-name", "nav_room_server",
-                    "--action-name", "/nav/navigate_room_x"],
-        output="screen",
-    )
-
-    nav_obj_module = Node(
-        package="navigate_server",
-        executable="navigate_action_server",
-        name="nav_object_server",
-        arguments=["--node-name", "nav_object_server",
-                    "--action-name", "/nav/navigate_object_x"],
+        name="nav_server",
+        arguments=["--node-name", "nav_server",
+                    "--action-name", "/nav/navigate"],
         output="screen",
     )
 
@@ -80,12 +71,19 @@ def generate_launch_description():
         output="screen",
     )
 
+    task_manager_bt_module = Node(
+        package="georg_task_manager",
+        executable="task_manager_bt",
+        name="task_manager_bt",
+        output="screen",
+    )
+
     return LaunchDescription([
       edu_robot_namespace_arg,
-      nav_room_module,
-      nav_obj_module,
+      nav_module,
       drive_route_module,
       gesture_module,
       voice_module ,
-      task_manager_module 
+      task_manager_module,
+      task_manager_bt_module
     ])
