@@ -83,7 +83,7 @@ source install/setup.bash
 ros2 run georg_task_manager task_manager_bt
 
 
-# Rendering the BT Mission
+## Rendering the BT Mission
 
 source install/setup.bash 
 
